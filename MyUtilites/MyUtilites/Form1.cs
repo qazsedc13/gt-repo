@@ -52,7 +52,7 @@ namespace MyUtilites
         private void btnRundom_Click(object sender, EventArgs e)
         {
             int n;
-            n = rnd.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32( numericUpDown2.Value));
+            n = rnd.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32( numericUpDown2.Value)+1);
             lblRandom.Text = n.ToString();
         }
     }
