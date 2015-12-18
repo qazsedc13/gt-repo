@@ -56,7 +56,14 @@ namespace MyUtilites
             lblRandom.Text = n.ToString();
             if (cbRandom.Checked)
             {
-                if (tbRandom.Text.IndexOf(n.ToString()) == -1) tbRandom.AppendText(n + "\n");
+                int i = 0;
+                while (tbRandom.Text.IndexOf(n.ToString()) != -1)
+                {
+                    n = rnd.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+                    i++;
+                    if (i > 1000) break;
+                }
+                if (i<=1000) tbRandom.AppendText(n + "\n");
             }
             else tbRandom.AppendText(n + "\n");
         }
