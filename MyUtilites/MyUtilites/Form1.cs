@@ -15,11 +15,19 @@ namespace MyUtilites
         int count = 0;
         Random rnd;
         Char[] spec_chars = new char[] {'%', '*', ')', '#', '&', '?', '$', '^', '~'};
+        Dictionary<string, double> metrica;
 
         public MainForm()
         {
             InitializeComponent();
             rnd = new Random();
+            metrica = new Dictionary<string, double>();
+            metrica.Add("mm", 1);
+            metrica.Add("cm", 10);
+            metrica.Add("dm", 100);
+            metrica.Add("m", 1000);
+            metrica.Add("km", 1000000);
+            metrica.Add("mile", 1609344);
         }
 
         private void TSMIExit_Click(object sender, EventArgs e)
@@ -149,6 +157,14 @@ namespace MyUtilites
                 tbPassword.Text = password;
                 Clipboard.SetText(password);
             }
+        }
+
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+            double m1 = metrica[cbFrom.Text];
+            double m2 = metrica[cbTo.Text];
+            double n = Convert.ToDouble(tbFrom.Text);
+            tbTo.Text = (n * m1 / m2).ToString();
         }
     }
 }
